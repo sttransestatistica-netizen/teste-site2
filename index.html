@@ -1,390 +1,377 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        :root {
-            --primary-green: #1B5E20;
-            --cream: #FFFDFA;
-            --text-dark: #2C3E50;
-            --white: #FFFFFF;
-            --border-radius: 12px;
-        }
+      :root {
+        --primary-green: #1B5E20;
+        --cream: #FFFDFA;
+        --text-dark: #2C3E50;
+        --white: #FFFFFF;
+        --border-radius: 12px;
+      }
 
-        html, body {
-            height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
-        }
+      html,
+      body {
+        height: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+      }
 
-        body {
-            color: var(--text-dark);
-            line-height: 1.6;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+      body {
+        color: var(--text-dark);
+        line-height: 1.6;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
+      .header {
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: var(--white);
+        border-bottom: 3px solid transparent;
+        border-image: linear-gradient(to right,
+            yellow 33.4%,
+            green 33.4%, green 66.6%,
+            red 66.6%);
+        border-image-slice: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2rem;
+        z-index: 1000;
+      }
+
+      .logo {
+        height: 50px;
+        object-fit: contain;
+      }
+
+      .main {
+        flex: 1;
+        padding-top: 40px;
+        max-width: 1450px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .service-section {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border: 2px solid var(--primary-green);
+      }
+
+      .service-card {
+        background: linear-gradient(135deg, var(--cream) 0%, #F0EDD8 100%);
+        border: 2px solid var(--primary-green);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        color: var(--text-dark);
+        transition: all 0.1s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card:hover {
+        transform: translateY(-1px);
+        border-color: var(--primary-green);
+      }
+
+      .service-card-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-green);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        transition: all 0.2s ease;
+      }
+
+      .service-card:hover .service-card-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .service-card-text {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      .footer {
+        border-top: 3px solid;
+        border-image: linear-gradient(to right,
+            yellow 33.4%,
+            green 33.4%, green 66.6%,
+            red 66.6%) 1;
+        background: linear-gradient(135deg, var(--primary-green) 0%, #1e4a5f 100%);
+        color: white;
+        padding: 3rem 0 1rem 0;
+        margin-top: auto;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: calc(50% - 50vw) !important;
+        margin-bottom: 0 !important;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .footer-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--cream);
+      }
+
+      .footer-section p {
+        margin-bottom: 0.5rem;
+        opacity: 0.9;
+      }
+
+      .footer-section i {
+        margin-right: 0.5rem;
+        color: #FFD700;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        opacity: 0.8;
+      }
+
+      .news-container {
+        max-width: 100%;
+      }
+
+      .news-featured-content {
+        padding: 2%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .news-featured-image {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .news-featured-image img {
+        height: 450px;
+        width: 100%;
+        object-fit: cover;
+        padding-right: 2%;
+      }
+
+      .news-featured-title {
+        color: var(--primary-green);
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+
+      .news-featured-excerpt {
+        color: #222222;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        opacity: 0.8;
+        font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-align: justify;
+        padding-right: 2% !important;
+      }
+
+      @media (max-width: 768px) {
         .header {
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 80px;
-            background: var(--white);
-            border-bottom: 3px solid transparent;
-            border-image: linear-gradient(
-                to right,
-                yellow 33.4%,
-                green 33.4%, green 66.6%,
-                red 66.6%
-            );
-            border-image-slice: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 2rem;
-            z-index: 1000;   
+          padding: 0 1rem;
         }
 
-        .logo {
-            height: 50px;
-            object-fit: contain;
-        }
-
-        .main {
-            flex: 1;
-            padding-top: 40px;
-            max-width: 1450px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .service-section {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 2px solid var(--primary-green);
-
-        }
-
-        .service-card {
-            background: linear-gradient(135deg, var(--cream) 0%, #F0EDD8 100%);
-            border: 2px solid var(--primary-green);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: var(--text-dark);
-            transition: all 0.1s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:hover {
-            transform: translateY(-1px);
-            border-color: var(--primary-green);
-        }
-
-        .service-card-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-green);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-            transition: all 0.2s ease;
-        }
-
-        .service-card:hover .service-card-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .service-card-text {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-    
-        .footer {
-    border-top: 3px solid; 
-    border-image: linear-gradient(
-        to right,
-        yellow 33.4%,
-        green 33.4%, green 66.6%,
-        red 66.6%
-    ) 1; 
-    background: linear-gradient(135deg, var(--primary-green) 0%, #1e4a5f 100%);
-    color: white;
-    padding: 3rem 0 1rem 0;
-    margin-top: auto;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-bottom: 0 !important;
-}
-
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .footer-section h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--cream);
-        }
-
-        .footer-section p {
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
-        }
-
-        .footer-section i {
-            margin-right: 0.5rem;
-            color: #FFD700;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            opacity: 0.8;
-        }
-
-      
-        .news-container {
-            max-width: 100%;
-        }
-
-
-.news-featured-content {
-            padding: 2%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-
-        .news-featured-image {
-            position: relative;
-            overflow: hidden;
-
-        }
-
-        .news-featured-image img {
-            height: 450px;
-            width: 100%;
-            object-fit: cover;
-            padding-right: 2%;  
-
+        .news-featured-content {
+          padding: 1rem;
         }
 
         .news-featured-title {
-            color: var(--primary-green);
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            line-height: 1.3;
-  
+          font-size: 1.2rem;
         }
 
         .news-featured-excerpt {
-            color: #222222;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            opacity: 0.8;
-            font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            text-align: justify;
-            padding-right: 2% !important;
+          font-size: 1rem;
         }
 
-       
-        @media (max-width: 768px) {
-            .header {
-                padding: 0 1rem;
-            }
-
-.news-featured-content {
-                padding: 1rem;
-            }
- .news-featured-title {
-    font-size: 1.2rem;
-  }
-  .news-featured-excerpt {
-    font-size: 1rem;
-  }
-
-            .service-section {
-                padding: 1.5rem;
-            }
-
-            .news-featured-image img {
-                height: 200px;
-            }
+        .service-section {
+          padding: 1.5rem;
         }
 
-        @media (max-width: 480px) {
-            .logo {
-                height: 40px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
- .news-featured-title {
-    font-size: 1.2rem; 
-  }
-  .news-featured-excerpt {
-    font-size: 1rem;
-  }
+        .news-featured-image img {
+          height: 200px;
         }
+      }
+
+      @media (max-width: 480px) {
+        .logo {
+          height: 40px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .news-featured-title {
+          font-size: 1.2rem;
+        }
+
+        .news-featured-excerpt {
+          font-size: 1rem;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
 
-<div vw class="enabled">
-  <div vw-access-button class="active"></div>
-  <div vw-plugin-wrapper></div>
-</div>
+  <body>
 
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-  new window.VLibras.Widget('https://vlibras.gov.br/app', {
-    avatar: 'Icaro'
-  });
-</script>
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper></div>
+    </div>
 
-    
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app', {
+        avatar: 'Icaro'
+      });
+    </script>
+
     <header class="header">
-            <a href="https://sttransestatistica-netizen.github.io/teste-site3/"  style="text-decoration: none; color: inherit;">
-            <img src="https://images.weserv.nl/?url=drive.google.com/uc%3Fexport%3Dview%26id%3D1Nc6KgvZjYE9h2eAvwmm0QhfisXbtYV28&output=png&bg=ffffff" alt="Logo STTRANS" class="logo" style="display: block;">
-        </a>
+      <a href="https://sttransestatistica-netizen.github.io/teste-site3/" style="text-decoration: none; color: inherit;">
+        <img src="https://images.weserv.nl/?url=drive.google.com/uc%3Fexport%3Dview%26id%3D1Nc6KgvZjYE9h2eAvwmm0QhfisXbtYV28&output=png&bg=ffffff" alt="Logo STTRANS" class="logo" style="display: block;">
+      </a>
 
-            <a href="https://sttransestatistica-netizen.github.io/teste-site3/"  style="text-decoration: none; color: inherit;">
-            <div class="service-card" 
-                 style="display: inline-flex; align-items: center; width: auto; padding: 5px 10px;
+      <a href="https://sttransestatistica-netizen.github.io/teste-site3/" style="text-decoration: none; color: inherit;">
+        <div class="service-card" style="display: inline-flex; align-items: center; width: auto; padding: 5px 10px;
                         position: fixed; top: 5px; left: 50%; transform: translateX(-50%);
                         z-index: 1000; background: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-                <div class="service-card-icon" 
-                     style="width: 28px; height: 28px; font-size: 1rem; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-home"></i>
-                </div>
-                <div class="service-card-text" style="margin-left: -14px; font-size: 1rem;"></div>
-            </div>
-        </a>
+          <div class="service-card-icon" style="width: 28px; height: 28px; font-size: 1rem; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-home"></i>
+          </div>
+          <div class="service-card-text" style="margin-left: -14px; font-size: 1rem;"></div>
+        </div>
+      </a>
 
-        <a href="https://www.queimadas.pb.gov.br/"  rel="noopener">
-            <img src="https://queimadas.pb.gov.br/storage/configuracoes/67b8a0e9b0ef81fhlt.png" alt="Logo Queimadas" class="logo" style="display: block;">
-        </a>
+      <a href="https://www.queimadas.pb.gov.br/" rel="noopener">
+        <img src="https://queimadas.pb.gov.br/storage/configuracoes/67b8a0e9b0ef81fhlt.png" alt="Logo Queimadas" class="logo" style="display: block;">
+      </a>
     </header>
 
-    
     <main class="main">
 
-        <section class="service-section">
-            <div class="news-featured-content">
+      <section class="service-section">
+        <div class="news-featured-content">
 
-            <div class="news-container">
-                <h3 class="news-featured-title">SUPERINTENDENTE</h3>
-                <div class="news-featured-image">
+          <div class="news-container">
+            <h3 class="news-featured-title">SUPERINTENDENTE</h3>
+            <div class="news-featured-image">
 
+              <div style="display: flex; align-items: center; gap: 3px">
 
-<div style="display: flex; align-items: center; gap: 3px">
+                <img src="https://raw.githubusercontent.com/sttransestatistica-netizen/IMAGENS-DO-SITE---N-O-PERDER-QUALIDADE/main/WhatsApp%20Image%202025-08-29%20at%2009.48.25.jpeg" style="width: 100%; height: auto; object-fit: contain;">
 
- <img src="https://raw.githubusercontent.com/sttransestatistica-netizen/IMAGENS-DO-SITE---N-O-PERDER-QUALIDADE/main/WhatsApp%20Image%202025-08-29%20at%2009.48.25.jpeg" style="width: 100%; height: auto; object-fit: contain;">
+              </div>
 
- </div>
-
-
-                    <h3 class="news-featured-title">Salomão Augusto Medeiros Souto</h3>
-                </div>
-                
-                <p class="news-featured-excerpt">
-                    Graduado em Administração, Salomão Augusto possui ampla experiência em trânsito, transportes e mobilidade urbana. Atuou em cargos de liderança em Campina Grande e atualmente coordena as operações da STTRANS em Queimadas, além de desempenhar funções estratégicas em Bananeiras. Ao longo de sua carreira, implementou melhorias nas vias urbanas, programas de monitoramento e gerenciamento de trânsito, consolidando uma atuação reconhecida nacionalmente por inovação viária e eficiência na gestão pública.
-                </p>
-
-               
-                <h3 class="news-featured-title">SUPERINTENDÊNCIA</h3>
-                <div class="news-featured-image">
-                    <img src="https://raw.githubusercontent.com/sttransestatistica-netizen/IMAGENS-DO-SITE---N-O-PERDER-QUALIDADE/main/WhatsApp%20Image%202025-09-01%20at%2010.12.59.jpeg
-" style="width: 100%; height: auto; object-fit: contain;  margin-right: 2%;">
-                </div>
-                
-<div style="height: 10px;"></div>
-<p class="news-featured-excerpt">
-Criada pela Lei Municipal nº 525, de 3 de maio de 2017, em conformidade com o Código de Trânsito Brasileiro (Lei nº 9.503/1997), a STTRANS é o órgão responsável pela gestão do trânsito e do transporte em Queimadas - PB.
-</p>
-
-<p class="news-featured-excerpt">
-Com autonomia administrativa e financeira, substituiu a antiga DITRANS, ampliando sua atuação e fortalecendo a política municipal de mobilidade urbana.
-</p>
-
-<p class="news-featured-excerpt">
-Suas ações envolvem o planejamento e execução dos sistemas viário e coletivo, a regulamentação dos serviços de transporte, a organização do tráfego urbano e a promoção da educação para o trânsito.
-</p>
-
-<p class="news-featured-excerpt">
-A missão da STTRANS é garantir que cidadãos e visitantes tenham uma mobilidade segura, organizada e inclusiva, assegurando deslocamentos com qualidade, fluidez e responsabilidade social.
-</p>
-
+              <h3 class="news-featured-title">Salomão Augusto Medeiros Souto</h3>
             </div>
- </div>
-        </section>
+
+            <p class="news-featured-excerpt">
+              Graduado em Administração, Salomão Augusto possui ampla experiência em trânsito, transportes e mobilidade urbana. Atuou em cargos de liderança em Campina Grande e atualmente coordena as operações da STTRANS em Queimadas, além de desempenhar funções estratégicas em Bananeiras. Ao longo de sua carreira, implementou melhorias nas vias urbanas, programas de monitoramento e gerenciamento de trânsito, consolidando uma atuação reconhecida nacionalmente por inovação viária e eficiência na gestão pública.
+            </p>
+
+            <h3 class="news-featured-title">SUPERINTENDÊNCIA</h3>
+            <div class="news-featured-image">
+              <img src="https://raw.githubusercontent.com/sttransestatistica-netizen/IMAGENS-DO-SITE---N-O-PERDER-QUALIDADE/main/WhatsApp%20Image%202025-09-01%20at%2010.12.59.jpeg
+" style="width: 100%; height: auto; object-fit: contain;  margin-right: 2%;">
+            </div>
+
+            <div style="height: 10px;"></div>
+            <p class="news-featured-excerpt">
+              Criada pela Lei Municipal nº 525, de 3 de maio de 2017, em conformidade com o Código de Trânsito Brasileiro (Lei nº 9.503/1997), a STTRANS é o órgão responsável pela gestão do trânsito e do transporte em Queimadas - PB.
+            </p>
+
+            <p class="news-featured-excerpt">
+              Com autonomia administrativa e financeira, substituiu a antiga DITRANS, ampliando sua atuação e fortalecendo a política municipal de mobilidade urbana.
+            </p>
+
+            <p class="news-featured-excerpt">
+              Suas ações envolvem o planejamento e execução dos sistemas viário e coletivo, a regulamentação dos serviços de transporte, a organização do tráfego urbano e a promoção da educação para o trânsito.
+            </p>
+
+            <p class="news-featured-excerpt">
+              A missão da STTRANS é garantir que cidadãos e visitantes tenham uma mobilidade segura, organizada e inclusiva, assegurando deslocamentos com qualidade, fluidez e responsabilidade social.
+            </p>
+
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3><i class="fas fa-building"></i> STTRANS</h3>
-                <p>Superintendência de Trânsito e Transportes de Queimadas</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3><i class="fas fa-map-marker-alt"></i> Endereço</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Rua Miguel Benicio de Melo, 74 - Centro, Queimadas</p>
-                <p><i class="fas fa-phone"></i> Telefone Para Contato: Em Breve</p>
-                <p><i class="fas fa-envelope"></i> E-mail: Em Breve</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3><i class="fas fa-clock"></i> Horário de Funcionamento</h3>
-                <p><i class="fas da-calendar-day"></i> Segunda à Sexta</p>
-                <p><i class="fas fa-clock"></i> 07:00 às 14:00</p>
-            </div>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3><i class="fas fa-building"></i> STTRANS</h3>
+          <p>Superintendência de Trânsito e Transportes de Queimadas</p>
         </div>
-        
-        <div class="footer-bottom">
-            <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-                <img src="https://images.weserv.nl/?url=drive.google.com/uc%3Fexport%3Dview%26id%3D1Nc6KgvZjYE9h2eAvwmm0QhfisXbtYV28&output=png&bg=transparent" alt="Logo STTRANS" style="height: 60px; object-fit: contain;">
-            </div>
-            <p>© 2025 | Todos os direitos reservados</p>
-            <p><strong>Serviço Digital. Sua vida mais fácil!</strong></p>
+
+        <div class="footer-section">
+          <h3><i class="fas fa-map-marker-alt"></i> Endereço</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Rua Miguel Benicio de Melo, 74 - Centro, Queimadas</p>
+          <p><i class="fas fa-phone"></i> Telefone Para Contato: Em Breve</p>
+          <p><i class="fas fa-envelope"></i> E-mail: Em Breve</p>
         </div>
+
+        <div class="footer-section">
+          <h3><i class="fas fa-clock"></i> Horário de Funcionamento</h3>
+          <p><i class="fas da-calendar-day"></i> Segunda à Sexta</p>
+          <p><i class="fas fa-clock"></i> 07:00 às 14:00</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+          <img src="https://images.weserv.nl/?url=drive.google.com/uc%3Fexport%3Dview%26id%3D1Nc6KgvZjYE9h2eAvwmm0QhfisXbtYV28&output=png&bg=transparent" alt="Logo STTRANS" style="height: 60px; object-fit: contain;">
+        </div>
+        <p>© 2025 | Todos os direitos reservados</p>
+        <p><strong>Serviço Digital. Sua vida mais fácil!</strong></p>
+      </div>
     </footer>
-</body>
+  </body>
+
 </html>
